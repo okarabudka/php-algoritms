@@ -3,7 +3,7 @@ version: "3.7"
 services:
   app:
     build: ./docker
-    image: akrbdk/php_algoritms
+    image: okarabudka/php_algoritms
     ports:
       - "8080:80"
     volumes:
