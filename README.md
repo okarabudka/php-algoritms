@@ -1,61 +1,59 @@
-# PHP Algoritms Exercises
+# PHP Algorithms Exercises
 
-A number of exercises to practice algoritms questions in PHP.
+A set of classic algorithm and data structure exercises implemented in PHP, each covered by PHPUnit tests.
 
-## Installation using docker
+## Context
 
-1. Clone the project using git
-2. Copy `.env.example` into `.env` (Don't need to change anything for local development)
-3. Navigate to the project root directory and run `docker-compose up -d`
-4. Install dependencies - `docker-compose exec app composer install`
-5. Open in browser http://127.0.0.1:8080
+Learning project built in July 2023 to prepare for algorithm questions in technical interviews.
 
+## Features
 
-## Build image commands
+Exercises in `exercises/`, one class per topic:
+
+- Strings: [Anagram](./exercises/Anagram/Anagram.php), [Capitalize](./exercises/Capitalize/Capitalize.php), [MaxChar](./exercises/MaxChar/MaxChar.php), [Palindrome](./exercises/Palindrome/Palindrome.php), [Reverse](./exercises/Reverse/Reverse.php), [Vowels](./exercises/Vowels/Vowels.php)
+- Arrays and numbers: [ArrayGroup](./exercises/ArrayGroup/ArrayGroup.php), [Fibonacci](./exercises/Fibonacci/Fibonacci.php), [FizzBuzz](./exercises/FizzBuzz/FizzBuzz.php), [MaxSubArraySum](./exercises/MaxSubArraySum/MaxSubArraySum.php), [Numbers](./exercises/Numbers/Numbers.php), [Spiral](./exercises/Spiral/Spiral.php)
+- Printing patterns: [Ladder](./exercises/Ladder/Ladder.php), [Pyramid](./exercises/Pyramid/Pyramid.php)
+- Searching: [Search](./exercises/Search/Search.php) (linear, binary, naive string search)
+- Sorting: [Sort](./exercises/Sort/Sort.php) (bubble, selection, insertion, merge, quick sort in two variants, radix)
+- Data structures: [Stack](./exercises/Stack/Stack.php), [Queue](./exercises/Queue/Queue.php), [QueueFromStacks](./exercises/QueueFromStacks/QueueFromStacks.php), [Tree](./exercises/Tree/Tree.php), [BinarySearchTree](./exercises/BinarySearchTree/BinarySearchTree.php), [MaxHeap](./exercises/MaxHeap/MaxHeap.php)
+- Event emitter: [Events](./exercises/Events/Events.php) (`on`, `fire`, `off`)
+
+## Tech stack
+
+- PHP 8.1 (Docker image `php:8.1-apache`)
+- PHPUnit 9.5, `spatie/phpunit-watcher`, `codedungeon/phpunit-result-printer`
+- Composer, Docker Compose
+
+## Architecture
+
+- `exercises/<Name>/<Name>.php`: solution, namespace `Exercises\`
+- `tests/<Name>/<Name>Test.php`: tests, namespace `Tests\`
+- `tests/GetReflectionMethod.php`: helper for testing non-public methods via reflection
+
+## Getting started
 
 ```bash
-docker build -t php-algoritms ./docker
-docker image ls
-docker run -d --rm -p 8080:80 --name php-algoritms -v "$PWD":/var/www/ php-algoritms
-docker ps
-
-docker exec -it php-algoritms bash
-composer install
-OR
-docker exec php-algoritms composer install
-
-docker stop php-algoritms
+cp .env.example .env
+docker compose up -d
+docker compose exec app composer install
 ```
 
+## Testing
 
-## Usage
+```bash
+docker compose exec app ./vendor/bin/phpunit
+```
 
-1. Run ./vendor/bin/phpunit or ./vendor/bin/phpunit-watcher watch to start tests.
+Or run the tests on every file change:
 
+```bash
+docker compose exec app ./vendor/bin/phpunit-watcher watch
+```
 
-## Exercises
+## Status
 
-- [Anagram](./exercises/Anagram/Anagram.php)
-- [ArrayGroup](./exercises/ArrayGroup/ArrayGroup.php)
-- [BinarySearchTree](./exercises/BinarySearchTree/BinarySearchTree.php)
-- [Capitalize](./exercises/Capitalize/Capitalize.php)
-- [Events](./exercises/Events/Events.php)
-- [Fibonacci](./exercises/Fibonacci/Fibonacci.php)
-- [FizzBuzz](./exercises/FizzBuzz/FizzBuzz.php)
-- [Ladder](./exercises/Ladder/Ladder.php)
-- [LinkedList](./exercises/LinkedList/LinkedList.php)
-- [MaxChar](./exercises/MaxChar/MaxChar.php)
-- [MaxHeap](./exercises/MaxHeap/MaxHeap.php)
-- [MaxSubArraySum](./exercises/MaxSubArraySum/MaxSubArraySum.php)
-- [Numbers](./exercises/Numbers/Numbers.php)
-- [Palindrome](./exercises/Palindrome/Palindrome.php)
-- [Pyramid](./exercises/Pyramid/Pyramid.php)
-- [Queue](./exercises/Queue/Queue.php)
-- [QueueFromStacks](./exercises/QueueFromStacks/QueueFromStacks.php)
-- [Reverse](./exercises/Reverse/Reverse.php)
-- [Search](./exercises/Search/Search.php)
-- [Sort](./exercises/Sort/Sort.php)
-- [Spiral](./exercises/Spiral/Spiral.php)
-- [Stack](./exercises/Stack/Stack.php)
-- [Tree](./exercises/Tree/Tree.php)
-- [Vowels](./exercises/Vowels/Vowels.php)
+Finished learning project (2023), not maintained.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
